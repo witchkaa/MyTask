@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {TaskService} from "../task.service";
+import {Task} from "../task.module";
 
 @Component({
   selector: 'app-tasks-add',
@@ -9,4 +11,12 @@ import { Component } from '@angular/core';
 })
 export class TasksAddComponent {
 
+  constructor(private taskService: TaskService) {
+
+  }
+
+  onTaskAdd($event: Event) {
+    let task: Task = new Task(event.target.value, this.getTodayAsString(), false);
+    this.taskService.addTask(task);
+  }
 }

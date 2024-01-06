@@ -24,7 +24,7 @@ export class TasksListComponent implements OnInit{
   tasks: Task[] = []
 
   onTaskChange($event: Event, task: Task) {
-    console.log('Task has changed.')
+    this.taskService.saveTask(task, ($event as any).target.checked).subscribe();
   }
 
   getDeadlineLabel(task: Task) {
